@@ -1,20 +1,20 @@
 import { type Deployments } from "@morpho-org/uikit/lib/deployments";
 import { ReactNode } from "react";
-import { optimism, plumeMainnet, polygon, worldchain } from "wagmi/chains";
+import { optimism, plumeMainnet, polygon, sonic, worldchain } from "wagmi/chains";
 
 export const APP_DETAILS = {
   // NOTE: Should always match the title in `index.html` (won't break anything, but should be correct)
-  name: import.meta.env.VITE_APP_TITLE,
+  name: "Rezerve Money Lending",
   description: "A minimal and open-source version of the main Morpho App",
-  url: "https://lite.morpho.org",
+  url: "https://lend.rezerve.money",
   icon: "/favicon.svg",
 };
 
 export const WORDMARK = ""; // Replace with "/your-wordmark.svg" to customize interface
 
-export const MIN_TIMELOCK = 3 * 24 * 60 * 60; // For filtering vaults
+export const MIN_TIMELOCK = 1 * 24 * 60 * 60; // For filtering vaults
 
-export const DEFAULT_CHAIN = plumeMainnet;
+export const DEFAULT_CHAIN = sonic;
 
 export const TRANSACTION_DATA_SUFFIX = "0x117E"; // (L I T E)
 

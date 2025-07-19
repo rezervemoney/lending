@@ -56,26 +56,27 @@ function createAlchemyHttp(slug: string): ({ url: string } & HttpTransportConfig
 }
 
 const chains = [
-  // full support
-  mainnet,
-  base,
-  polygon,
-  unichain,
-  customChains.katana,
-  // lite support (alphabetical)
-  // arbitrum,
-  // corn,
-  // fraxtal,
-  // hemi,
-  // ink,
-  lisk,
-  // modeMainnet,
-  optimism,
-  plumeMainnet,
-  // scrollMainnet,
-  // sonic,
-  customChains.tac,
-  worldchain,
+  sonic,
+  // // full support
+  // mainnet,
+  // base,
+  // polygon,
+  // unichain,
+  // customChains.katana,
+  // // lite support (alphabetical)
+  // // arbitrum,
+  // // corn,
+  // // fraxtal,
+  // // hemi,
+  // // ink,
+  // lisk,
+  // // modeMainnet,
+  // optimism,
+  // plumeMainnet,
+  // // scrollMainnet,
+  // // sonic,
+  // customChains.tac,
+  // worldchain,
 ] as const;
 
 const transports: { [K in (typeof chains)[number]["id"]]: Transport } & { [k: number]: Transport } = {
@@ -157,7 +158,7 @@ export function createConfig(args: {
 }) {
   return createWagmiConfig(
     createConnectKitConfigParams({
-      chains: args.chains ?? chains,
+      chains: chains,
       transports: args.transports ?? transports,
       connectors: args.connectors,
       walletConnectProjectId: import.meta.env.VITE_WALLET_KIT_PROJECT_ID,

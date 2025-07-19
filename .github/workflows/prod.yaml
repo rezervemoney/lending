@@ -1,0 +1,51 @@
+name: Deploy Production
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+    runs-on: ubuntu-latest
+
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 10
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: |
+          pnpm lite-app:build
+          echo lend.rezerve.money > ./apps/lite/dist/CNAME
+          touch ./apps/lite/dist/.nojekyll
+
+      - name: Deploy
+        # https://github.com/JamesIves/github-pages-deploy-action
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          # gh-pages
+          branch: gh-pages
+          folder: apps/lite/dist
+          git-config-name: Dre Cronye
+          git-config-email: dre@rezerve.money
+          commit-message: "Deployed to GitHub Pages"
+          # repository-name: rezervemoney/public-lending
+          # token: ${{ secrets.TOKEN_GITHUB }}

@@ -2,7 +2,7 @@ import { getChainSlug } from "@morpho-org/uikit/lib/utils";
 import "core-js/stable/array/iterator";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Navigate, Outlet, Route, Routes } from "react-router";
+import { HashRouter, Navigate, Outlet, Route, Routes } from "react-router";
 
 import "@/index.css";
 import { BorrowSubPage } from "@/app/dashboard/borrow-subpage.tsx";
@@ -13,7 +13,7 @@ import { DEFAULT_CHAIN } from "@/lib/constants";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route
           path="/"
@@ -35,6 +35,6 @@ createRoot(document.getElementById("root")!).render(
           </Route>
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </StrictMode>,
 );
