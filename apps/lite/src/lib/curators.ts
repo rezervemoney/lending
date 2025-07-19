@@ -1,6 +1,6 @@
 import * as customChains from "@morpho-org/uikit/lib/chains";
 import { Address, isAddressEqual } from "viem";
-import { lisk, optimism, plumeMainnet } from "wagmi/chains";
+import { lisk, optimism, plumeMainnet, sonic } from "wagmi/chains";
 
 import { graphql, FragmentOf } from "@/graphql/graphql";
 
@@ -32,6 +32,15 @@ export const MANUALLY_WHITELISTED_CURATORS: FragmentOf<typeof CuratorFragment>[]
     image: "https://cdn.morpho.org/v2/assets/images/mevcapital.png",
     name: "MEV Capital",
     url: "https://mevcapital.com/",
+  },
+  {
+    addresses: [
+      { address: "0x0E43DF9F40Cc6eEd3eC70ea41D6F34329fE75986", chainId: sonic.id },
+      { address: "0x5f5a6E0F769BBb9232d2F6EDA84790296b288974", chainId: sonic.id },
+    ],
+    image: "/rezerve.png",
+    name: "Rezerve",
+    url: "https://rezerve.money/",
   },
   // {
   //   addresses: [{ address: "0xB2b9a27a6160Bf9ffbD1a8d245f5de75541b1DDD", chainId: customChains.tac.id }],
